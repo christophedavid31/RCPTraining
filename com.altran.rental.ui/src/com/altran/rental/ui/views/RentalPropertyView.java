@@ -54,7 +54,7 @@ public class RentalPropertyView {
 		rentedObjectLabel.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1));
 		
 		Label rentedToLabel = new Label(infoGroup, SWT.BORDER);
-		rentedToLabel.setText("Loué à");
+		rentedToLabel.setText("LouÃ© Ã ");
 		
 		customerNameLabel = new Label(infoGroup, SWT.BORDER);
 		
