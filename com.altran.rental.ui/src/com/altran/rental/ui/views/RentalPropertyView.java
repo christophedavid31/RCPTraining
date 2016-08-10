@@ -3,8 +3,11 @@ package com.altran.rental.ui.views;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
+import javax.inject.Named;
 
+import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.e4.ui.di.Focus;
+import org.eclipse.e4.ui.services.IServiceConstants;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -12,7 +15,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 
-import com.altran.rental.core.RentalCoreActivator;
 import com.opcoach.training.rental.Rental;
 import com.opcoach.training.rental.RentalAgency;
 
@@ -26,7 +28,14 @@ public class RentalPropertyView {
 
 	private Label toDate;
 	
+	@Inject
 	private RentalAgency myAgency;
+	
+	@Inject @Optional
+	public void receiveSelection(@Named(IServiceConstants.ACTIVE_SELECTION) Rental r ){
+		if ( r != null)
+			setRental(r);
+	}
 	
 	public void setRental(Rental r){
 		rentedObjectLabel.setText(r.getRentedObject().getName());
@@ -36,9 +45,7 @@ public class RentalPropertyView {
 	}
 	
 	
-	@Inject
-	public RentalPropertyView(RentalAgency a) {
-		myAgency = a;
+	public RentalPropertyView() {
 	}
 	
 	@PostConstruct
@@ -73,7 +80,7 @@ public class RentalPropertyView {
 		
 		toDate = new Label(dateGroup, SWT.BORDER);
 		
-		setRental(myAgency.getRentals().get(1));
+		setRental(myAgency.getRentals().get(0));
 	}
 	
 	
