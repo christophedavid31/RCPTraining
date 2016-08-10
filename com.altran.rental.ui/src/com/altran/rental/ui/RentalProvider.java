@@ -2,15 +2,19 @@ package com.altran.rental.ui;
 
 import java.util.Collection;
 
+import org.eclipse.jface.viewers.IColorProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.widgets.Display;
 
 import com.opcoach.training.rental.Customer;
 import com.opcoach.training.rental.RentalAgency;
+import com.opcoach.training.rental.RentalObject;
 
-public class RentalProvider extends LabelProvider implements ITreeContentProvider {
+public class RentalProvider extends LabelProvider implements ITreeContentProvider,IColorProvider {
 
-	
 	@Override
 	public Object[] getElements(Object inputElement) {
 		// TODO Auto-generated method stub
@@ -22,9 +26,17 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 
 	@Override
 	public Object[] getChildren(Object parentElement) {
-		if (parentElement instanceof RentalAgency)
-			return ((RentalAgency) parentElement).getCustomers().toArray();
-		else
+		if (parentElement instanceof RentalAgency) {
+			RentalAgency a  = (RentalAgency) parentElement;
+			return new Node[] {
+					new Node(Node.CUSTOMERS,a),
+					new Node(Node.LOCATIONS,a),
+					new Node(Node.RENTAL_OBJECTS,a)
+			};
+		}
+		else if (parentElement instanceof Node) {
+			return ((Node) parentElement).getChildren();
+		}
 			return null;
 	}
 
@@ -36,7 +48,7 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 
 	@Override
 	public boolean hasChildren(Object element) {
-		return true;
+		return element instanceof RentalAgency  || element instanceof Node;
 	}
 	
 	@Override
@@ -45,10 +57,53 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 			return ((RentalAgency) element).getName();
 		else if (element instanceof Customer)
 			return ((Customer) element).getDisplayName();
+		else if (element instanceof RentalObject)
+			return ((RentalObject) element).getName();
 		else
 			return super.getText(element);
 	}
 
-	
+	class Node{
+		public static final String RENTAL_OBJECTS = "Rental Objects";
+		public static final String LOCATIONS = "Locations";
+		public static final String CUSTOMERS = "Customers";
+		private String label;
+		private RentalAgency agency;
+		
+		public Node(String label, RentalAgency agency){
+			super();
+			this.label = label;
+			this.agency = agency;
+		}
+		
+		public Object[] getChildren(){
+			if (label == CUSTOMERS)
+				return agency.getCustomers().toArray();
+			else if (label==RENTAL_OBJECTS)
+				return agency.getObjectsToRent().toArray();
+			else if (label==LOCATIONS)
+				return agency.getRentals().toArray();
+			else
+				return null;
+		}
+		
+		@Override
+		public String toString() {
+			return label;
+		}
+	}
+
+	@Override
+	public Color getForeground(Object element) {
+		if ( element instanceof Customer)
+			return Display.getCurrent().getSystemColor(SWT.COLOR_RED);
+		
+		return null;
+	}
+
+	@Override
+	public Color getBackground(Object element) {
+		return null;
+	}
 
 }

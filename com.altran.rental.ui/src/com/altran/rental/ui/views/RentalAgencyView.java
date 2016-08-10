@@ -33,6 +33,7 @@ public class RentalAgencyView {
 		tv.setLabelProvider(p);
 		
 		tv.setInput(agencies);
+		tv.expandAll();
 	}
 	
 	
