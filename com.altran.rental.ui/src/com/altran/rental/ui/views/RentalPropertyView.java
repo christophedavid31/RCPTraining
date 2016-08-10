@@ -14,6 +14,7 @@ import org.eclipse.swt.widgets.Label;
 
 import com.altran.rental.core.RentalCoreActivator;
 import com.opcoach.training.rental.Rental;
+import com.opcoach.training.rental.RentalAgency;
 
 public class RentalPropertyView {
 	
@@ -25,6 +26,8 @@ public class RentalPropertyView {
 
 	private Label toDate;
 	
+	private RentalAgency myAgency;
+	
 	public void setRental(Rental r){
 		rentedObjectLabel.setText(r.getRentedObject().getName());
 		customerNameLabel.setText(r.getCustomer().getDisplayName());
@@ -34,8 +37,8 @@ public class RentalPropertyView {
 	
 	
 	@Inject
-	public RentalPropertyView() {
-		
+	public RentalPropertyView(RentalAgency a) {
+		myAgency = a;
 	}
 	
 	@PostConstruct
@@ -70,7 +73,7 @@ public class RentalPropertyView {
 		
 		toDate = new Label(dateGroup, SWT.BORDER);
 		
-		setRental(RentalCoreActivator.getAgency().getRentals().get(1));
+		setRental(myAgency.getRentals().get(1));
 	}
 	
 	
