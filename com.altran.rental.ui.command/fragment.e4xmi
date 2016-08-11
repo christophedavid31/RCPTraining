@@ -7,7 +7,7 @@
     <elements xsi:type="commands:Handler" xmi:id="_k2L0IIrOEeW7h_qdP9N9fw" elementId="org.eclipse.pde.ui.templates.handler.0" contributionURI="bundleclass://com.altran.rental.ui.command/com.altran.rental.ui.command.handlers.CopyCustomerHandler" command="_UCYfwIrOEeW7h_qdP9N9fw"/>
   </fragments>
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_pVgfIIrOEeW7h_qdP9N9fw" featurename="menuContributions" parentElementId="xpath:/">
-    <elements xsi:type="menu:MenuContribution" xmi:id="_BducUIrPEeW7h_qdP9N9fw" elementId="org.eclipse.pde.ui.templates.menucontribution.1" positionInParent="after=additions" parentId="com.altran.rental.eap.popupmenu.displaymessage">
+    <elements xsi:type="menu:MenuContribution" xmi:id="_BducUIrPEeW7h_qdP9N9fw" elementId="org.eclipse.pde.ui.templates.menucontribution.displaymessage" positionInParent="after=additions" parentId="com.altran.rental.eap.popupmenu.displaymessage">
       <children xsi:type="menu:HandledMenuItem" xmi:id="_Dtii0YrPEeW7h_qdP9N9fw" elementId="org.eclipse.pde.ui.templates.handledmenuitem." label="" iconURI="platform:/plugin/com.altran.rental.ui.command/icons/Sample.png" command="_UCYfwIrOEeW7h_qdP9N9fw">
         <visibleWhen xsi:type="ui:CoreExpression" xmi:id="_kn-nUF-pEeannp-zvLLRIw" coreExpressionId="com.altran.rental.ui.command.customerSelected"/>
       </children>
