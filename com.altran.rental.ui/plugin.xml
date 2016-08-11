@@ -8,5 +8,13 @@
             uri="fragment.e4xmi">
       </fragment>
    </extension>
+   <extension
+         point="com.opcoach.e4.preferences.e4PreferencePages">
+      <page
+            class="com.altran.rental.ui.prefs.RentalPrefPage"
+            id="com.altran.rental.ui.page"
+            name="PrefPage">
+      </page>
+   </extension>
 
 </plugin>
