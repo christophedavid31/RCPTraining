@@ -62,11 +62,9 @@ public class RentalAgencyView implements RentalUIConstants{
 	}
 	
 	@Inject
-	public void changeCustomerColor(@Preference(nodePath=PLUGIN_ID, value=PREF_CUSTOMER_COLOR) String rgbKey ){
+	public void changeCustomerColor(@Preference(PREF_CUSTOMER_COLOR) String rgbKey1, @Preference(PREF_RENTAL_COLOR) String rgbKey2, @Preference(PREF_RENTAL_OBJECT_COLOR) String rgbKey3 ){
 		if ( tv != null && ! tv.getControl().isDisposed())
-		{
 			tv.refresh();
-		}
 	}
 	
 	@Focus

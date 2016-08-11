@@ -151,6 +151,14 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 		{
 			return getAColor( store.getString(PREF_CUSTOMER_COLOR) );
 		}
+		else if ( element instanceof Rental)
+		{
+			return getAColor( store.getString(PREF_RENTAL_COLOR) );
+		}
+		else if ( element instanceof RentalObject)
+		{
+			return getAColor( store.getString(PREF_RENTAL_OBJECT_COLOR) );
+		}
 		else
 			return null;
 	}
