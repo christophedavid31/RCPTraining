@@ -23,16 +23,16 @@
         <children xsi:type="menu:HandledMenuItem" xmi:id="_6wlLj8gZEeSyMNYR5xypkQ" elementId="com.altran.rental.eap.handleditem.about" label="About" command="_6wlLhsgZEeSyMNYR5xypkQ"/>
       </children>
       <children xsi:type="menu:Menu" xmi:id="_cxracF-eEeannp-zvLLRIw" elementId="com.altran.rental.eap.menu.display" label="Display">
-        <children xsi:type="menu:HandledMenuItem" xmi:id="_BQq8gF-eEeannp-zvLLRIw" elementId="com.altran.rental.eap.handledmenuitem.displaymessage" label="Display Message" command="_FmFTAF-dEeannp-zvLLRIw"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_BQq8gF-eEeannp-zvLLRIw" elementId="com.altran.rental.eap.handledmenuitem.displaymessage0" label="Display Message" command="_FmFTAF-dEeannp-zvLLRIw"/>
       </children>
     </mainMenu>
     <sharedElements xsi:type="basic:Part" xmi:id="_BOdXQF70Eeas0PoM-z24PA" elementId="com.altran.rental.eap.part.agencies" contributionURI="bundleclass://com.altran.rental.ui/com.altran.rental.ui.views.RentalAgencyView" label="Agencies">
       <menus xmi:id="_JUnk0F-eEeannp-zvLLRIw" elementId="com.altran.rental.eap.menu.agenciesview">
         <tags>ViewMenu</tags>
-        <children xsi:type="menu:HandledMenuItem" xmi:id="_MOO2QF-eEeannp-zvLLRIw" elementId="com.altran.rental.eap.handledmenuitem.displaymessage" label="Display Message" command="_FmFTAF-dEeannp-zvLLRIw"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_MOO2QF-eEeannp-zvLLRIw" elementId="com.altran.rental.eap.handledmenuitem.displaymessage2" label="Display Message" command="_FmFTAF-dEeannp-zvLLRIw"/>
       </menus>
       <menus xsi:type="menu:PopupMenu" xmi:id="_R-F8EF-eEeannp-zvLLRIw" elementId="com.altran.rental.eap.popupmenu.displaymessage" label="">
-        <children xsi:type="menu:HandledMenuItem" xmi:id="_VMOsAF-eEeannp-zvLLRIw" elementId="com.altran.rental.eap.handledmenuitem.displaymessage" label="Display Message" command="_FmFTAF-dEeannp-zvLLRIw"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_VMOsAF-eEeannp-zvLLRIw" elementId="com.altran.rental.eap.handledmenuitem.displaymessage3" label="Display Message" command="_FmFTAF-dEeannp-zvLLRIw"/>
       </menus>
     </sharedElements>
     <trimBars xmi:id="_6wlLlcgZEeSyMNYR5xypkQ" elementId="com.altran.rental.eap.trimbar.top">
@@ -61,7 +61,7 @@
     <children xsi:type="menu:HandledMenuItem" xmi:id="_P8oaoF-eEeannp-zvLLRIw" elementId="id.displaymessage" label="Display Message" command="_FmFTAF-dEeannp-zvLLRIw"/>
   </menuContributions>
   <menuContributions xmi:id="_g2XQgF-hEeannp-zvLLRIw" elementId="com.altran.rental.eap.menucontribution.0" positionInParent="after=additions" parentId="org.eclipse.ui.main.menu">
-    <children xsi:type="menu:HandledMenuItem" xmi:id="_dAsmgF-hEeannp-zvLLRIw" elementId="com.altran.rental.eap.handledmenuitem.displaymessage" label="DisplayMessage (contribution)"/>
+    <children xsi:type="menu:HandledMenuItem" xmi:id="_dAsmgF-hEeannp-zvLLRIw" elementId="com.altran.rental.eap.handledmenuitem.displaymessage" label="DisplayMessage (contribution)" command="_FmFTAF-dEeannp-zvLLRIw"/>
   </menuContributions>
   <commands xmi:id="_6wlLfMgZEeSyMNYR5xypkQ" elementId="org.eclipse.ui.file.exit" commandName="quitCommand"/>
   <commands xmi:id="_6wlLgMgZEeSyMNYR5xypkQ" elementId="org.eclipse.ui.file.open" commandName="openCommand"/>
