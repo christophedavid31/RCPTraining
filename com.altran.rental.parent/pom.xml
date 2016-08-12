@@ -13,8 +13,10 @@
 	</properties>
 
 	<!-- configure p2 repository to resolve against -->
-	<repositories> <repository> <id>indigo</id> <layout>p2</layout> <url>http://download.eclipse.org/releases/kepler/</url> 
-		</repository> </repositories>
+	<repositories>
+		<repository> <id>neon</id> <layout>p2</layout> <url>http://download.eclipse.org/releases/neon/</url> </repository>
+		<repository> <id>e4Preferences</id> <layout>p2</layout> <url>https://dl.bintray.com/opcoach/e4Preferences</url> </repository>
+	</repositories>
 
 	<build>
 		<plugins>
@@ -45,8 +47,8 @@
 						<environment> <os>win32</os> <ws>win32</ws> <arch>x86</arch> </environment>
 						<environment>
 							<os>macosx</os>
-<!-- 							<ws>cocoa</ws> -->
-<!-- 							<arch>x86_64</arch> -->
+							<ws>cocoa</ws> 
+ 							<arch>x86_64</arch> 
 						</environment>
 					</environments>
 				</configuration>
@@ -59,6 +61,11 @@
 	<!-- the modules that should be built together -->
 	<modules>
 		<module>../com.altran.rental.core</module>
+		<module>../com.altran.rental.eap</module>
+		<module>../com.altran.rental.feature</module>
+		<module>../com.altran.rental.ui</module>
+		<module>../com.altran.rental.ui.command</module>
+		<module>../com.altran.rental.ui.es</module>
 	</modules>
 
 
