@@ -11,6 +11,7 @@
 <booleanAttribute key="clearwslog" value="false"/>
 <stringAttribute key="configLocation" value="${workspace_loc}/.metadata/.plugins/org.eclipse.pde.core/rentalEap"/>
 <booleanAttribute key="default" value="false"/>
+<stringAttribute key="deselected_workspace_plugins" value="org.eclipse.e4.tools.preference.spy,org.eclipse.e4.tools.spy"/>
 <booleanAttribute key="includeOptional" value="true"/>
 <stringAttribute key="location" value="${workspace_loc}/../runtime-rentalEap"/>
 <listAttribute key="org.eclipse.debug.ui.favoriteGroups">
