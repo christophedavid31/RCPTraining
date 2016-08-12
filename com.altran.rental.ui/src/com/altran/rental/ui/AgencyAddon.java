@@ -2,7 +2,10 @@
 package com.altran.rental.ui;
 
 import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -42,4 +45,15 @@ public class AgencyAddon implements RentalUIConstants{
 		return reg;
 	}
 
+	@Inject
+	private void showAdapterExtensions(IExtensionRegistry reg){
+		for (IConfigurationElement elt : reg.getConfigurationElementsFor("org.eclipse.core.runtime.adapters"))
+		{
+			String pluginName = elt.getNamespaceIdentifier();
+			String adapterName = elt.getAttribute("class");
+			System.out.printf("Plugin : %-50s Adapter : %s\n", pluginName, adapterName);
+		}
+		
+	}
+	
 }
