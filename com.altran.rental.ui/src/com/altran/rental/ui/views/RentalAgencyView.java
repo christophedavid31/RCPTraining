@@ -21,6 +21,7 @@ import org.eclipse.swt.widgets.Composite;
 
 import com.altran.rental.ui.RentalProvider;
 import com.altran.rental.ui.RentalUIConstants;
+import com.altran.rental.ui.palettes.Palette;
 import com.opcoach.training.rental.RentalAgency;
 
 public class RentalAgencyView implements RentalUIConstants{
@@ -62,17 +63,16 @@ public class RentalAgencyView implements RentalUIConstants{
 	}
 	
 	@Inject
-	public void changeCustomerColor(@Preference(PREF_CUSTOMER_COLOR) String rgbKey1, @Preference(PREF_RENTAL_COLOR) String rgbKey2, @Preference(PREF_RENTAL_OBJECT_COLOR) String rgbKey3 ){
+	public void changeColor(@Preference(PREF_CUSTOMER_COLOR) String rgbKey1, @Preference(PREF_RENTAL_COLOR) String rgbKey2, @Preference(PREF_RENTAL_OBJECT_COLOR) String rgbKey3 ){
 		if ( tv != null && ! tv.getControl().isDisposed())
 			tv.refresh();
 	}
 	
 	@Inject
-	public void changeCustomerColor(@Preference(PREF_PALETTE) String pal ){
+	public void changeColor(Palette palette ){
 		if ( tv != null && ! tv.getControl().isDisposed())
 			tv.refresh();
 	}
-	
 	
 	@Focus
 	public void onFocus() {

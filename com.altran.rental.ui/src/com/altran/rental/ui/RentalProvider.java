@@ -30,6 +30,9 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 	@Inject
 	@Named(RENTAL_UI_PREF_STORE) IPreferenceStore store;
 	
+	@Inject 
+	private Palette palette;
+	
 	@Override
 	public Object[] getElements(Object inputElement) {
 		// TODO Auto-generated method stub
@@ -145,25 +148,15 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 			return RentalProvider.this;
 		}
 	}
-	@Inject @Named(PALETTE_MANAGER)
-	private Map<String, Palette> palettes;
 
 	@Override
 	public Color getForeground(Object element) {
-		
-		String idPalette = store.getString(PREF_PALETTE);
-		Palette pal = palettes.get(idPalette);
-		return pal==null ? null : pal.getProvider().getForeground(element);
-
+		return palette==null ? null : palette.getForeground(element);
 	}
 
 	@Override
 	public Color getBackground(Object element) {
-		
-		String idPalette = store.getString(PREF_PALETTE);
-		Palette pal = palettes.get(idPalette);
-		return pal==null ? null : pal.getProvider().getBackground(element);
-
+		return palette==null ? null : palette.getBackground(element);
 	}
 
 	@Inject @Named(RENTAL_UI_IMG_REGISTRY)
@@ -180,4 +173,10 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 		
 		return super.getImage(element);
 	}
+	
+	@Inject
+	public void changeColor(Palette palette ){
+		this.palette = palette;
+	}
+	
 }

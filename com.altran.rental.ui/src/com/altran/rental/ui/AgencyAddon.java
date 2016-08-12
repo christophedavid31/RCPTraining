@@ -13,6 +13,7 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
+import org.eclipse.e4.core.di.extensions.Preference;
 import org.eclipse.e4.core.services.log.Logger;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
@@ -26,14 +27,23 @@ import com.opcoach.training.rental.RentalAgency;
 import com.opcoach.training.rental.core.helpers.RentalAgencyGenerator;
 
 public class AgencyAddon implements RentalUIConstants{
-	
+
+	private Map<String, Palette> palettes;
+
 	@PostConstruct
 	public void applicationStarsted(IEclipseContext context, IExtensionRegistry reg) {		
 		RentalAgency a = RentalAgencyGenerator.createSampleAgency();
 		context.set(RentalAgency.class, a);
 		context.set(RENTAL_UI_IMG_REGISTRY, getLocalImageRegistry());
-		context.set(RENTAL_UI_PREF_STORE, new ScopedPreferenceStore(InstanceScope.INSTANCE, PLUGIN_ID));
-		context.set(PALETTE_MANAGER, readPalettes(reg, context));
+		ScopedPreferenceStore store = new ScopedPreferenceStore(InstanceScope.INSTANCE, PLUGIN_ID);
+		context.set(RENTAL_UI_PREF_STORE, store);
+		palettes = readPalettes(reg, context);
+		context.set(PALETTE_MANAGER, palettes);
+
+		String idPalette = store.getString(PREF_PALETTE);
+		Palette pal = palettes.get(idPalette);
+		
+		context.set(Palette.class, pal );
 		
 	}
 	
@@ -62,7 +72,6 @@ public class AgencyAddon implements RentalUIConstants{
 			}
 			
 		}
-		
 		
 		return palettes;
 	}
@@ -96,4 +105,10 @@ public class AgencyAddon implements RentalUIConstants{
 		
 	}
 	
+	@Inject
+	public void changePalette(@Preference(PREF_PALETTE) String pal, IEclipseContext ctx ){
+		if (palettes != null)
+			ctx.set(Palette.class, palettes.get(pal));
+	}
+
 }
