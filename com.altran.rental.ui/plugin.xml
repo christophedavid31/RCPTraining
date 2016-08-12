@@ -33,7 +33,7 @@
          point="com.altran.rental.ui.palette">
       <palette
             id="com.altran.rental.ui.palette1"
-            name="Defaullt"
+            name="Default"
             paletteClass="com.altran.rental.ui.palettes.DefaultPalette">
       </palette>
    </extension>
