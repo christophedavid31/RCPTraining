@@ -67,6 +67,13 @@ public class RentalAgencyView implements RentalUIConstants{
 			tv.refresh();
 	}
 	
+	@Inject
+	public void changeCustomerColor(@Preference(PREF_PALETTE) String pal ){
+		if ( tv != null && ! tv.getControl().isDisposed())
+			tv.refresh();
+	}
+	
+	
 	@Focus
 	public void onFocus() {
 		

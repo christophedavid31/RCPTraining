@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin>
+   <extension-point id="palette" name="palette" schema="schema/com.altran.rental.ui.palette.exsd"/>
 
    <extension
          id="com.altran.rental.ui.fragment"
@@ -11,9 +12,15 @@
    <extension
          point="com.opcoach.e4.preferences.e4PreferencePages">
       <page
+            category="com.altran.rental.ui.page.palettePage"
             class="com.altran.rental.ui.prefs.RentalPrefPage"
             id="com.altran.rental.ui.page"
-            name="PrefPage">
+            name="Default">
+      </page>
+      <page
+            class="com.altran.rental.ui.prefs.PalettePreferencePage"
+            id="com.altran.rental.ui.page.palettePage"
+            name="Palettes">
       </page>
    </extension>
    <extension
@@ -21,6 +28,22 @@
       <initializer
             class="com.altran.rental.ui.prefs.RentalAbstractPreferenceInitializer">
       </initializer>
+   </extension>
+   <extension
+         point="com.altran.rental.ui.palette">
+      <palette
+            id="com.altran.rental.ui.palette1"
+            name="Defaullt"
+            paletteClass="com.altran.rental.ui.palettes.DefaultPalette">
+      </palette>
+   </extension>
+   <extension
+         point="com.altran.rental.ui.palette">
+      <palette
+            id="com.altran.rental.ui.palette2"
+            name="Ugly"
+            paletteClass="com.altran.rental.ui.palettes.UglyPalette">
+      </palette>
    </extension>
 
 </plugin>

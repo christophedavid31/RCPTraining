@@ -1,6 +1,7 @@
 package com.altran.rental.ui;
 
 import java.util.Collection;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -18,6 +19,7 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 
+import com.altran.rental.ui.palettes.Palette;
 import com.opcoach.training.rental.Customer;
 import com.opcoach.training.rental.Rental;
 import com.opcoach.training.rental.RentalAgency;
@@ -143,42 +145,25 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 			return RentalProvider.this;
 		}
 	}
+	@Inject @Named(PALETTE_MANAGER)
+	private Map<String, Palette> palettes;
 
 	@Override
 	public Color getForeground(Object element) {
-					
-		if ( element instanceof Customer)
-		{
-			return getAColor( store.getString(PREF_CUSTOMER_COLOR) );
-		}
-		else if ( element instanceof Rental)
-		{
-			return getAColor( store.getString(PREF_RENTAL_COLOR) );
-		}
-		else if ( element instanceof RentalObject)
-		{
-			return getAColor( store.getString(PREF_RENTAL_OBJECT_COLOR) );
-		}
-		else
-			return null;
-	}
-	
-	private Color getAColor(String rgbKey){
-		ColorRegistry colorRegistry = JFaceResources.getColorRegistry();
 		
-		Color col = colorRegistry.get(rgbKey);
-		
-		if (col==null)
-		{
-			colorRegistry.put(rgbKey, StringConverter.asRGB(rgbKey));
-			col = colorRegistry.get(rgbKey);
-		}
-		return col;
+		String idPalette = store.getString(PREF_PALETTE);
+		Palette pal = palettes.get(idPalette);
+		return pal==null ? null : pal.getProvider().getForeground(element);
+
 	}
 
 	@Override
 	public Color getBackground(Object element) {
-		return null;
+		
+		String idPalette = store.getString(PREF_PALETTE);
+		Palette pal = palettes.get(idPalette);
+		return pal==null ? null : pal.getProvider().getBackground(element);
+
 	}
 
 	@Inject @Named(RENTAL_UI_IMG_REGISTRY)
