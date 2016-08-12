@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin>
-   <extension-point id="palette" name="palette" schema="schema/com.altran.rental.ui.palette.exsd"/>
+   <extension-point id="palette" name="%extension-point.name" schema="schema/com.altran.rental.ui.palette.exsd"/>
 
    <extension
          id="com.altran.rental.ui.fragment"
@@ -15,12 +15,12 @@
             category="com.altran.rental.ui.page.palettePage"
             class="com.altran.rental.ui.prefs.RentalPrefPage"
             id="com.altran.rental.ui.page"
-            name="Default">
+            name="%page.name">
       </page>
       <page
             class="com.altran.rental.ui.prefs.PalettePreferencePage"
             id="com.altran.rental.ui.page.palettePage"
-            name="Palettes">
+            name="%page.name.0">
       </page>
    </extension>
    <extension
@@ -33,7 +33,7 @@
          point="com.altran.rental.ui.palette">
       <palette
             id="com.altran.rental.ui.palette1"
-            name="Default"
+            name="%palette.name"
             paletteClass="com.altran.rental.ui.palettes.DefaultPalette">
       </palette>
    </extension>
@@ -41,7 +41,7 @@
          point="com.altran.rental.ui.palette">
       <palette
             id="com.altran.rental.ui.palette2"
-            name="Ugly"
+            name="%palette.name.0"
             paletteClass="com.altran.rental.ui.palettes.UglyPalette">
       </palette>
    </extension>
